@@ -2,7 +2,7 @@
 
 [`jenkins/ssh-slave`](https://hub.docker.com/r/jenkins/ssh-slave/)
 
-A [Jenkins](https://jenkins-ci.org) slave using SSH to establish connection.
+A [Jenkins](https://jenkins-ci.org) slave using SSH to establish connection to support dotnet sdk, Cloud Foundry CLI and git.
 
 See [Jenkins Distributed builds](https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds) for more info.
 
@@ -15,6 +15,8 @@ export PUBLICKEY=`cat ~/.ssh/id_rsa.pub`
 docker build -t ssh-slave:latest .
 docker run -p 22222:22 -t ssh-slave:latest "${PUBLICKEY}"
 ```
+
+To test the ssh connection
 
 ```bash
 ssh jenkins@localhost -p 22222
