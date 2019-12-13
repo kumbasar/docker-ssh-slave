@@ -11,7 +11,13 @@ See [Jenkins Distributed builds](https://wiki.jenkins-ci.org/display/JENKINS/Dis
 To run a Docker container
 
 ```bash
-docker run jenkins/ssh-slave "<public key>"
+export PUBLICKEY=`cat ~/.ssh/id_rsa.pub`
+docker build -t ssh-slave:latest .
+docker run -p 22222:22 -t ssh-slave:latest "${PUBLICKEY}"
+```
+
+```bash
+ssh jenkins@localhost -p 22222
 ```
 
 You'll then be able to connect this slave using ssh-slaves-plugin as "jenkins" with the matching private key.
